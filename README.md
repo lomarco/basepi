@@ -1,33 +1,53 @@
-### make nconfig
-target packages -> hardware handling -> firmware -> brcmfmac-sdio-firmware-rpi-wifi
+# BasePI: Custom Firmware for Raspberry Pi Zero 2W
+[![Buildroot Version](https://shields.io)](https://buildroot.org)
+[![License: MIT](https://shields.io)](LICENSE)
 
-toolchain -> bootlin toolchain variant
+<table>
+<tr>
+<td>
 
-system configuration -> root password
+**BasePI** is a lightweight custom firmware for the [Raspberry Pi Zero 2W](https://www.raspberrypi.com/products/raspberry-pi-zero-2-w), built on the [Buildroot](https://gitlab.com/buildroot.org/buildroot) ecosystem. This project optimizes the creation of minimal system images.
 
-target packages -> networking applications -> wpa_supplicant:
-- 
-- 
-- 
-- 
+</td>
+</tr>
+</table>
 
-target packages -> networking applications -> dropbear
+## Quick Start
+### 1. Environment Setup
+Clone the repository with submodules:
+``` bash
+git clone --depth 1 --recursive https://github.com/lomarco/basepi
+cd basepi
+```
 
-target packages -> hardware handling -> firmware -> brcmfmac-sdio-firmware-rpi-bt
+### 2. Configuration Deployment
 
-target packages -> hardware handling -> firmware -> linux-firmware -> WiFi firmware -> \*Broadcom\*
+Use the Makefile wrapper to initialize the project. This links the Buildroot kernel with our external BasePI tree:
+``` bash
+make setup
+```
 
-### make linux-nconfig
-device drivers -> network device support -> wireless drivers -> Broadcom IEEE802.11n PCIe SoftMAC WLAN
+### 3. Build
+Start the compilation process. The initial build may take 20–40 minutes depending on your CPU performance:
+``` bash
+make -j$(nproc)
+```
 
-device drivers -> network device support -> wireless drivers -> Broadcom FullMAC WLAN driver
+### 4. Flash SD Card
 
-device drivers -> network device support -> wireless drivers -> Broadcom 43xx-legacy wireless support (mac80211 stack)
+After successful completion, the ready-to-use image is located at:
+`buildroot/output/images/sdcard.img`.
 
-### Post settings
+Flash it to a MicroSD card:
 
-/etc/modules-load.d/wifi.conf
+``` bash
+sudo dd if=buildroot/output/images/sdcard.img of=/dev/sdX bs=4M status=progress
+```
 
-### todo:
-Add bluetooth support
-Add gitmodule buildroot
+*Replace `/dev/sdX` with your device path.*
+
+## License
+BasePi firmware is licensed under the MIT. See the [LICENSE](LICENSE) for details.
+
+## Copyright
+© 2026 [lomarco](https://github.com/lomarco). All rights reserved.
