@@ -12,6 +12,12 @@
 </tr>
 </table>
 
+## Features
+- Image size: <30MiB
+- Built-in WiFi
+- Built-in DropBear ssh server
+- Built-in UART-debugging
+
 ## Quick Start
 ### 1. Environment Setup
 Clone the repository with submodules:
