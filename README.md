@@ -1,7 +1,8 @@
 # BasePI: Custom Firmware for Raspberry Pi Zero 2W
-[![Buildroot](https://img.shields.io/badge/Buildroot-2025.02-blue)](https://buildroot.org)
+
+[![Buildroot](https://img.shields.io/badge/Buildroot-blue)](https://buildroot.org)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/lomarco/basepi/build.yml?branch=main)](https://github.com/lomarco/basepi/actions)
+
 <table>
 <tr>
 <td>
