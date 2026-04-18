@@ -1,6 +1,6 @@
 BR_DIR = $(abspath buildroot)
 BR_EXT = $(abspath external)
-DEFCONFIG = f_defconfig
+DEFCONFIG = rpizero2w_defconfig
 
 all: build
 
