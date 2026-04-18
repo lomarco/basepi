@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# echo -e "$(free -h)\n\n\n$(df -h)\n\n\n\n\n\n\n\n$(ip a)\n\n\n\n\n\n\n\n$(wpa_supplicant -s -B -i wlan0 -D nl80211,wext -c /etc/wpa_supplicant/wpa_supplicant.conf 2>&1)\n\n\n\n$(rfkill 2>&1)\n\n\n\n$(ls /sys/class/rfkill 2>&1)\n\n\n\n\n\n\n\n$(for rfk in /sys/class/rfkill/*/; do echo "=== $rfk ==="; echo "type:  $(cat $rfk/type)"; echo "name:  $(cat $rfk/name)"; echo "state: $(cat $rfk/state)"; echo ""; done 2>&1)\n\n\n\n\n\n\n\n$(ps aux)\n\n\n\n\n\n\n\n$(lsmod 2>&1)\n\n\n\n\n\n\n\n$(ip link show 2>&1)\n\n\n\n\n\n\n\n$(dmesg 2>&1)" > /pi_startup_log.txt; sync
+
+BLKc="/sys/class/leds/ACT/brightness"
+
+onc() {
+  echo 1 > $BLKc
+}
+
+offc() {
+  echo 0 > $BLKc
+}
+
+while true; do
+  onc
+  sleep 0.1
+  offc
+  sleep 0.1
+done
