@@ -13,4 +13,7 @@ build:
 clean:
 	$(MAKE) -C $(BR_DIR) clean
 
+distclean:
+	$(MAKE) -C $(BR_DIR) distclean
+
 .PHONY: all setup build clean
