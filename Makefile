@@ -7,13 +7,7 @@ all: build
 setup:
 	$(MAKE) -C $(BR_DIR) BR2_EXTERNAL=$(BR_EXT) $(DEFCONFIG)
 
-build:
-	$(MAKE) -C $(BR_DIR) BR2_EXTERNAL=$(BR_EXT)
+%::
+	$(MAKE) -C $(BR_DIR) BR2_EXTERNAL=$(BR_EXT) $@
 
-clean:
-	$(MAKE) -C $(BR_DIR) clean
-
-distclean:
-	$(MAKE) -C $(BR_DIR) distclean
-
-.PHONY: all setup build clean
+.PHONY: all setup
